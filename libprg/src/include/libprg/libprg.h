@@ -6,6 +6,12 @@ typedef struct {
     int error;
 } result_t;
 
+typedef struct {
+    int* elementos;
+    int topo;
+    int capacidade;
+} pilha_t;
+
 typedef enum { SUM, SUB } operation_t;
 
 result_t sub(double a, double b);
