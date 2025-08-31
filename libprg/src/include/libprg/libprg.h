@@ -2,14 +2,14 @@
 #define LIBPRG_LIBPRG_H
 
 typedef struct {
-    double value;
-    int error;
-} result_t;
+    int* elementos;
+    int tamanho;
+    int topo;
+} pilha_t;
 
-typedef enum { SUM, SUB } operation_t;
-
-result_t sub(double a, double b);
-result_t sum(double a, double b);
-result_t compute(double a, double b, operation_t op);
+pilha_t* cria_pilha(int qnt);
+void adiciona_elemento(pilha_t* pilha, int valor);
+void remove_item(pilha_t* pilha);
+void imprime_pilha(pilha_t* pilha);
 
 #endif
