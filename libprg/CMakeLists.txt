@@ -6,7 +6,7 @@ set(HEADERS
 )
 # Add source files here manually
 set(SOURCES
-        "${CMAKE_CURRENT_LIST_DIR}/src/libprg/libprg.c"
+        "${CMAKE_CURRENT_LIST_DIR}/src/libprg/pilha.c"
 )
 
 add_library(libprg
