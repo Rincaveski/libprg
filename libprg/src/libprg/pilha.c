@@ -2,36 +2,49 @@
 #include <stdlib.h>
 #include <libprg/libprg.h>
 
+typedef struct pilha {
+    int* elementos;
+    int tamanho;
+    int topo;
+} pilha_t;
+
 pilha_t* cria_pilha(int qnt) {
     pilha_t* pilha = malloc(sizeof(pilha_t));
-    pilha->elementos = malloc(sizeof(double) * qnt);
+    pilha->elementos = malloc(sizeof(int) * qnt);
     pilha->topo = -1;
     pilha->tamanho = qnt;
 
     return pilha;
 }
 
-void adiciona_elemento(pilha_t* pilha, double valor) {
+void empilhar(pilha_t* pilha, int valor) {
     if (pilha->tamanho < pilha->topo) {
-        printf("Pilha já está no limite");
+        pilha->tamanho = pilha->tamanho * 2;
+        pilha->elementos = realloc(pilha->elementos, pilha->tamanho * sizeof(int));
     } else {
         pilha->topo++;
         pilha->elementos[pilha->topo] = valor;
+        printf("Elemento \"%.2fl\" foi inserido.\n", valor);
     }
 
 }
 
-void remove_item(pilha_t* pilha) {
+int desempilhar(pilha_t* pilha) {
     if (pilha->topo >= 0) {
         pilha->topo--;
-        printf("Elemento removido do topo da fila.\n");
-    } else {
-        printf("Pilha já está limpa");
+        return pilha->elementos[pilha->topo + 2];
     }
+
+    return 0;
 }
 
 void imprime_pilha(pilha_t* pilha) {
     for (int i = 0; i < pilha->topo; ++i) {
         printf("Elemento %d: %d\n", i + 1, pilha->elementos[i]);
     }
+}
+
+void destruir(pilha_t *pilha) {
+    free(pilha->elementos);
+    free(pilha);
 }
