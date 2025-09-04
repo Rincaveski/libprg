@@ -4,14 +4,14 @@
 
 pilha_t* cria_pilha(int qnt) {
     pilha_t* pilha = malloc(sizeof(pilha_t));
-    pilha->elementos = malloc(sizeof(int) * qnt);
+    pilha->elementos = malloc(sizeof(double) * qnt);
     pilha->topo = -1;
     pilha->tamanho = qnt;
 
     return pilha;
 }
 
-void adiciona_elemento(pilha_t* pilha, int valor) {
+void adiciona_elemento(pilha_t* pilha, double valor) {
     if (pilha->tamanho < pilha->topo) {
         printf("Pilha já está no limite");
     } else {

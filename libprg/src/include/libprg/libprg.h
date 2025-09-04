@@ -8,7 +8,7 @@ typedef struct {
 } pilha_t;
 
 pilha_t* cria_pilha(int qnt);
-void adiciona_elemento(pilha_t* pilha, int valor);
+void adiciona_elemento(pilha_t* pilha, double valor);
 void remove_item(pilha_t* pilha);
 void imprime_pilha(pilha_t* pilha);
 
