@@ -38,6 +38,14 @@ int desempilhar(pilha_t* pilha) {
     return 0;
 }
 
+int topo(pilha_t* pilha) {
+    return pilha->elementos[pilha->topo];
+}
+
+int tamanho(pilha_t* pilha) {
+    return pilha->tamanho;
+}
+
 void imprime_pilha(pilha_t* pilha) {
     for (int i = 0; i < pilha->topo; ++i) {
         printf("Elemento %d: %d\n", i + 1, pilha->elementos[i]);
