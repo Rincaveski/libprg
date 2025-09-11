@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "libprg/libprg.h"
@@ -10,6 +11,10 @@ typedef struct fila {
     int fim;
     int capacidade;
 } fila_t;
+
+bool cheia(fila_t* fila) {
+    return fila->tamanho >= fila->capacidade;
+}
 
 fila_t* criar_fila(int capacidade) {
     fila_t* fila = malloc(sizeof(fila_t));
@@ -27,16 +32,54 @@ void enfileirar(fila_t* fila, int valor) {
     }
 
     fila->elementos[fila->fim] = valor;
-    fila->fim++;
+    fila->fim = (fila->fim + 1) % fila->capacidade;
     fila->tamanho++;
 };
-// desenfileirar
-// inicio
-// fim
-// tamanho
 
-bool cheia(fila_t* fila) {
-    return fila->tamanho >= fila->capacidade;
+void desenfileirar(fila_t* fila) {
+    if (fila->tamanho <= 0) {
+        exit(EXIT_FAILURE);
+    }
+
+    fila->inicio = (fila->inicio + 1) % fila->capacidade;
+    fila->tamanho--;
 }
 
-// destruir_fila
+int inicio_fila(fila_t* fila) {
+    return fila->elementos[fila->inicio];
+}
+
+int fim_fila(fila_t* fila) {
+    if (fila->tamanho > 0 &&
+        (fila->inicio == fila->fim) &&
+        fila->fim == 0) {
+        printf("chegou aqui\n");
+        return fila->elementos[fila->capacidade - 1];
+    }
+    return fila->elementos[fila->fim];
+}
+
+int tamanho_fila(fila_t* fila) {
+    return fila->tamanho;
+}
+
+void imprime_fila(fila_t* fila) {
+    int auxiliar = fila->inicio;
+    if (fim_fila(fila)) {
+
+    }
+
+    printf("%d %d", fila->inicio, fila->fim);
+    for (int i = fila->inicio; i < fila->fim; ++i) {
+        printf("%d", fila->elementos[i]);
+    }
+
+    while (auxiliar != fila->fim) {
+
+    }
+}
+
+void destruir_fila(fila_t* fila) {
+    free(fila->elementos);
+    free(fila);
+}

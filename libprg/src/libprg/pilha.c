@@ -24,9 +24,8 @@ void empilhar(pilha_t* pilha, int valor) {
     } else {
         pilha->topo++;
         pilha->elementos[pilha->topo] = valor;
-        printf("Elemento \"%.2fl\" foi inserido.\n", valor);
+        printf("Elemento \"%d\" foi inserido.\n", valor);
     }
-
 }
 
 int desempilhar(pilha_t* pilha) {
@@ -38,11 +37,11 @@ int desempilhar(pilha_t* pilha) {
     return 0;
 }
 
-int topo(pilha_t* pilha) {
+int topo_pilha(pilha_t* pilha) {
     return pilha->elementos[pilha->topo];
 }
 
-int tamanho(pilha_t* pilha) {
+int tamanho_pilha(pilha_t* pilha) {
     return pilha->tamanho;
 }
 
@@ -52,7 +51,7 @@ void imprime_pilha(pilha_t* pilha) {
     }
 }
 
-void destruir(pilha_t *pilha) {
+void destruir_pilha(pilha_t *pilha) {
     free(pilha->elementos);
     free(pilha);
 }

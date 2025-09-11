@@ -8,14 +8,19 @@ pilha_t* cria_pilha(int qnt);
 void empilhar(pilha_t* pilha, int valor);
 int desempilhar(pilha_t* pilha);
 void imprime_pilha(pilha_t* pilha);
-void destruir(pilha_t* pilha);
-int topo(pilha_t* pilha);
-int tamanho(pilha_t* pilha);
+void destruir_pilha(pilha_t* pilha);
+int topo_pilha(pilha_t* pilha);
+int tamanho_pilha(pilha_t* pilha);
 
 // Fila
 typedef struct fila fila_t;
 fila_t* criar_fila(int capacidade);
 void enfileirar(fila_t* fila, int valor);
-bool cheia(fila_t* fila);
+void desenfileirar(fila_t* fila);
+int inicio_fila(fila_t* fila);
+int fim_fila(fila_t* fila);
+int tamanho_fila(fila_t* fila);
+void imprime_fila(fila_t* fila);
+void destruir_fila(fila_t* fila);
 
 #endif
