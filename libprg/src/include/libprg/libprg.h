@@ -23,4 +23,15 @@ int tamanho_fila(fila_t* fila);
 void imprime_fila(fila_t* fila);
 void destruir_fila(fila_t* fila);
 
+
+// Lista
+typedef struct lista_linear lista_linear_t;
+lista_linear_t* criar_lista_linear(int capacidade);
+void inserir_lista_linear(lista_linear_t* lista, int valor);
+int buscar_lista_linear(lista_linear_t* lista, int valor);
+void remover_item_lista_linear(lista_linear_t* lista, int valor);
+bool vazia(lista_linear_t* lista);
+bool cheia(lista_linear_t* lista);
+void destruir(lista_linear_t* lista);
+
 #endif
