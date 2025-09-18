@@ -2,40 +2,52 @@
 
 #include "libprg/libprg.h"
 
-typedef struct lista_linear {
+typedef struct lista {
     int* elementos;
     int tamanho;
     int capacidade;
-} lista_linear_t;
+    bool isOrdenada;
+} lista_t;
 
-lista_linear_t* criar_lista_linear(int capacidade) {
-    lista_linear_t* lista = malloc(sizeof(lista));
+bool vazia(lista_t* lista);
+bool cheia(lista_t* lista);
+void inserir_nao_ordenada(lista_t *lista, int valor);
+void inserir_ordenada(lista_t *lista, int valor);
+int busca_linear(lista_t* lista, int valor);
+int busca_binaria(lista_t* lista, int valor);
+
+lista_t* criar_lista(int capacidade, bool ordenar) {
+    lista_t* lista = malloc(sizeof(lista));
     lista->elementos = malloc(sizeof(int) * capacidade);
     lista->tamanho = 0;
     lista->capacidade = capacidade;
+    lista->isOrdenada = ordenar;
+
+    return  lista;
 }
 
-void inserir_lista_linear(lista_linear_t* lista, int valor) {
+void inserir_lista(lista_t* lista, int valor) {
     if (cheia(lista)) {
         exit(EXIT_FAILURE);
     }
 
-    lista->elementos[lista->tamanho] = valor;
-    lista->tamanho++;
+    if (lista->isOrdenada) {
+        inserir_ordenada(lista, valor);
+    } else {
+        inserir_nao_ordenada(lista, valor);
+    }
 }
 
-int buscar_lista_linear(lista_linear_t* lista, int valor) {
-    for (int i = 0; i < lista->tamanho; ++i) {
-        if (lista->elementos[i] == valor) {
-            return i;
-        }
+int buscar_lista(lista_t* lista, int valor) {
+    if (lista->isOrdenada) {
+        return busca_binaria(lista, valor);
     }
 
-    return -1;
+    return busca_linear(lista, valor);
 }
 
-void remover_item_lista_linear(lista_linear_t* lista, int valor) {
-    int indice = buscar_lista_linear(lista, valor);
+void remover_item_lista(lista_t* lista, int valor) {
+    int indice = buscar_lista(lista, valor);
 
     if (indice == -1) {
         exit(EXIT_FAILURE);
@@ -45,15 +57,57 @@ void remover_item_lista_linear(lista_linear_t* lista, int valor) {
     lista->tamanho--;
 }
 
-bool vazia(lista_linear_t* lista) {
+void destruir_lista(lista_t* lista) {
+    free(lista->elementos);
+    free(lista);
+}
+
+bool vazia(lista_t* lista) {
     return lista->tamanho == 0;
 }
 
-bool cheia(lista_linear_t* lista) {
+bool cheia(lista_t* lista) {
     return lista->tamanho >= lista->capacidade;
 }
 
-void destruir(lista_linear_t* lista) {
-    free(lista->elementos);
-    free(lista);
+void inserir_nao_ordenada(lista_t *lista, int valor) {
+    lista->elementos[lista->tamanho] = valor;
+    lista->tamanho++;
+}
+
+void inserir_ordenada(lista_t *lista, int valor) {
+    for (int i = lista->tamanho - 1; i < 0; --i) {
+        if (lista->elementos[i] < valor) {
+            lista->elementos[i + 1] = valor;
+            lista->tamanho++;
+            break;
+        }
+
+        lista->elementos[i + 1] = lista->elementos[i];
+    }
+}
+
+int busca_binaria(lista_t* lista, int valor) {
+    int indice = lista->tamanho / 2;
+
+
+    while () {
+        if (lista->elementos[indice] == valor) {
+            return indice;
+        }
+
+        if (lista->elementos[indice] < valor) {
+            indice = lista->tamanho
+        }
+    }
+}
+
+int busca_linear(lista_t* lista, int valor) {
+    for (int i = 0; i < lista->tamanho; ++i) {
+        if (lista->elementos[i] == valor) {
+            return i;
+        }
+    }
+
+    return -1;
 }
