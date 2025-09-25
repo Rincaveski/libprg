@@ -91,15 +91,15 @@ int busca_binaria(lista_t* lista, int valor) {
     int indice = lista->tamanho / 2;
 
 
-    while () {
-        if (lista->elementos[indice] == valor) {
-            return indice;
-        }
-
-        if (lista->elementos[indice] < valor) {
-            indice = lista->tamanho
-        }
-    }
+    // while () {
+    //     if (lista->elementos[indice] == valor) {
+    //         return indice;
+    //     }
+    //
+    //     if (lista->elementos[indice] < valor) {
+    //         indice = lista->tamanho
+    //     }
+    // }
 }
 
 int busca_linear(lista_t* lista, int valor) {

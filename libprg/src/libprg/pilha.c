@@ -24,14 +24,13 @@ void empilhar(pilha_t* pilha, int valor) {
     } else {
         pilha->topo++;
         pilha->elementos[pilha->topo] = valor;
-        printf("Elemento \"%d\" foi inserido.\n", valor);
     }
 }
 
 int desempilhar(pilha_t* pilha) {
     if (pilha->topo >= 0) {
         pilha->topo--;
-        return pilha->elementos[pilha->topo + 2];
+        return pilha->elementos[pilha->topo + 1];
     }
 
     return 0;
