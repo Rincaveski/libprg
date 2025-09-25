@@ -13,7 +13,7 @@ int topo_pilha(pilha_t* pilha);
 int tamanho_pilha(pilha_t* pilha);
 
 // Fila
-typedef struct fila fila_t;
+typedef struct no fila_t;
 fila_t* criar_fila(int capacidade);
 void enfileirar(fila_t* fila, int valor);
 void desenfileirar(fila_t* fila);
@@ -31,5 +31,9 @@ void inserir_lista(lista_t* lista, int valor);
 int buscar_lista(lista_t* lista, int valor);
 void remover_item_lista(lista_t* lista, int valor);
 void destruir_lista(lista_t* lista);
+
+// Lista encadeada
+typedef struct no no_t;
+no_t* criar_no(int valor);
 
 #endif
