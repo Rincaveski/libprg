@@ -13,7 +13,7 @@ set(SOURCES
 add_library(libprg
         src/libprg/pilha.c
         src/libprg/fila.c
-        src/libprg/lista_linear.c
+        src/libprg/lista.c
         src/libprg/no.c
 )
 target_sources(libprg PUBLIC ${SOURCES})
