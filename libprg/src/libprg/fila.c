@@ -53,7 +53,6 @@ int fim_fila(fila_t* fila) {
     if (fila->tamanho > 0 &&
         (fila->inicio == fila->fim) &&
         fila->fim == 0) {
-        printf("chegou aqui\n");
         return fila->elementos[fila->capacidade - 1];
     }
     return fila->elementos[fila->fim];
@@ -64,18 +63,9 @@ int tamanho_fila(fila_t* fila) {
 }
 
 void imprime_fila(fila_t* fila) {
-    int auxiliar = fila->inicio;
-    if (fim_fila(fila)) {
-
-    }
-
-    printf("%d %d", fila->inicio, fila->fim);
-    for (int i = fila->inicio; i < fila->fim; ++i) {
-        printf("%d", fila->elementos[i]);
-    }
-
-    while (auxiliar != fila->fim) {
-
+    for (int i = 0; i < fila->tamanho; i++) {
+        int indice = (fila->inicio + i) % fila->capacidade;
+        printf("%d ", fila->elementos[indice]);
     }
 }
 
