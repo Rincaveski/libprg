@@ -54,12 +54,8 @@ void remover_item_lista(lista_t* lista, int valor) {
         exit(EXIT_FAILURE);
     }
 
-    // listar(lista);
-
     lista->elementos[indice] = lista->elementos[lista->tamanho - 1];
     lista->tamanho--;
-
-    // listar(lista);
 }
 
 void destruir_lista(lista_t* lista) {
