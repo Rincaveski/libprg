@@ -12,9 +12,7 @@ typedef struct no {
     int capacidade;
 } fila_t;
 
-bool cheia(fila_t* fila) {
-    return fila->tamanho >= fila->capacidade;
-}
+static bool cheia(fila_t* fila);
 
 fila_t* criar_fila(int capacidade) {
     fila_t* fila = malloc(sizeof(fila_t));
@@ -72,4 +70,8 @@ void imprime_fila(fila_t* fila) {
 void destruir_fila(fila_t* fila) {
     free(fila->elementos);
     free(fila);
+}
+
+static bool cheia(fila_t* fila) {
+    return fila->tamanho >= fila->capacidade;
 }
