@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "libprg/libprg.h"
@@ -10,7 +11,7 @@ typedef struct lista {
 } lista_t;
 
 bool vazia(lista_t* lista);
-bool cheia(lista_t* lista);
+static bool cheia(lista_t* lista);
 void inserir_nao_ordenada(lista_t *lista, int valor);
 void inserir_ordenada(lista_t *lista, int valor);
 int busca_linear(lista_t* lista, int valor);
@@ -53,8 +54,12 @@ void remover_item_lista(lista_t* lista, int valor) {
         exit(EXIT_FAILURE);
     }
 
-    lista->elementos[indice] = lista->elementos[lista->tamanho];
+    // listar(lista);
+
+    lista->elementos[indice] = lista->elementos[lista->tamanho - 1];
     lista->tamanho--;
+
+    // listar(lista);
 }
 
 void destruir_lista(lista_t* lista) {
@@ -62,11 +67,23 @@ void destruir_lista(lista_t* lista) {
     free(lista);
 }
 
+void listar_primeiro_elemento_e_tamanho(lista_t* lista) {
+    printf("Primeiro elemento: %d\nTamanho da lista: %d\n", lista->elementos[0], lista->tamanho);
+}
+
+void listar(lista_t* lista) {
+    for (int i = 0; i < lista->tamanho; ++i) {
+        printf("Item %d: %d\n", (i + 1), lista->elementos[i]);
+    }
+}
+
+//-------------------------------------------//
+
 bool vazia(lista_t* lista) {
     return lista->tamanho == 0;
 }
 
-bool cheia(lista_t* lista) {
+static bool cheia(lista_t* lista) {
     return lista->tamanho >= lista->capacidade;
 }
 

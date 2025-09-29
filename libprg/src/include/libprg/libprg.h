@@ -23,7 +23,6 @@ int tamanho_fila(fila_t* fila);
 void imprime_fila(fila_t* fila);
 void destruir_fila(fila_t* fila);
 
-
 // Lista
 typedef struct lista lista_t;
 lista_t* criar_lista(int capacidade, bool ordenar);
@@ -31,6 +30,8 @@ void inserir_lista(lista_t* lista, int valor);
 int buscar_lista(lista_t* lista, int valor);
 void remover_item_lista(lista_t* lista, int valor);
 void destruir_lista(lista_t* lista);
+void listar_primeiro_elemento_e_tamanho(lista_t* lista);
+void listar(lista_t* lista);
 
 // Lista encadeada
 typedef struct no no_t;
