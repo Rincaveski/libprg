@@ -36,5 +36,11 @@ void listar(lista_t* lista);
 // Lista encadeada
 typedef struct no no_t;
 no_t* criar_no(int valor);
+no_t* criar_no_encadeado(int valor);
+void adicionar_no(no_t** inicio, int valor);
+void adicionar_no_circular(no_t** inicio, int valor);
+no_t *buscar_no(no_t** inicio, int valor);
+void remover_no(no_t** inicio, int valor);
+void destruir_no(no_t* no);
 
 #endif
