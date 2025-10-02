@@ -3,14 +3,14 @@
 #include <stdbool.h>
 
 // Pilha
-typedef struct pilha pilha_t;
-pilha_t* cria_pilha(int qnt);
-void empilhar(pilha_t* pilha, int valor);
-int desempilhar(pilha_t* pilha);
-void imprime_pilha(pilha_t* pilha);
-void destruir_pilha(pilha_t* pilha);
-int topo_pilha(pilha_t* pilha);
-int tamanho_pilha(pilha_t* pilha);
+// typedef struct pilha pilha_t;
+// pilha_t* cria_pilha(int qnt);
+// void empilhar(pilha_t* pilha, int valor);
+// int desempilhar(pilha_t* pilha);
+// void imprime_pilha(pilha_t* pilha);
+// void destruir_pilha(pilha_t* pilha);
+// int topo_pilha(pilha_t* pilha);
+// int tamanho_pilha(pilha_t* pilha);
 
 // Fila
 typedef struct no fila_t;
@@ -41,6 +41,6 @@ void adicionar_no(no_t** inicio, int valor);
 void adicionar_no_circular(no_t** inicio, int valor);
 no_t *buscar_no(no_t** inicio, int valor);
 void remover_no(no_t** inicio, int valor);
-void destruir_no(no_t* no);
+void destruir_no(no_t** inicio)
 
 #endif

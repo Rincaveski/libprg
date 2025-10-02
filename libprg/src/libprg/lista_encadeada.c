@@ -77,6 +77,25 @@ void remover_no(no_t** inicio, int valor) {
     }
 }
 
-void destruir_no(no_t* no) {
-    free(no);
+void destruir_no(no_t** inicio) {
+    no_t* atual = *inicio;
+
+    while (atual) {
+        no_t* proximo = atual->proximo;
+        free(atual);
+        atual = proximo;
+    }
+}
+
+void destruir_no_circular(no_t** inicio) {
+    no_t* atual = *inicio;
+
+    while (atual) {
+        no_t* proximo = atual->proximo;
+        free(atual);
+        if (proximo == *inicio) {
+            break;
+        }
+        atual = proximo;
+    }
 }
