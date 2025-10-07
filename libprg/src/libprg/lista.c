@@ -101,18 +101,24 @@ void inserir_ordenada(lista_t *lista, int valor) {
 }
 
 int busca_binaria(lista_t* lista, int valor) {
-    int indice = lista->tamanho / 2;
+    int inicio = 0, fim = lista->tamanho - 1;
 
-
-    // while () {
-    //     if (lista->elementos[indice] == valor) {
-    //         return indice;
-    //     }
-    //
-    //     if (lista->elementos[indice] < valor) {
-    //         indice = lista->tamanho
-    //     }
-    // }
+    while (inicio <= fim)
+    {
+        int meio = inicio + (fim - inicio) / 2;
+        if (valor == lista->elementos[meio])
+        {
+            return meio;
+        }
+        if (lista->elementos[meio] < valor)
+        {
+            inicio = meio + 1;
+        } else
+        {
+            fim = meio - 1;
+        }
+    }
+    return -1;
 }
 
 int busca_linear(lista_t* lista, int valor) {
