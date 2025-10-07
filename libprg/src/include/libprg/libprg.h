@@ -13,7 +13,7 @@ int topo_pilha(pilha_t* pilha);
 int tamanho_pilha(pilha_t* pilha);
 
 // Fila
-typedef struct no fila_t;
+typedef struct fila fila_t;
 fila_t* criar_fila(int capacidade);
 void enfileirar(fila_t* fila, int valor);
 void desenfileirar(fila_t* fila);
@@ -34,13 +34,13 @@ void listar_primeiro_elemento_e_tamanho(lista_t* lista);
 void listar(lista_t* lista);
 
 // Lista encadeada
-typedef struct no no_t;
+typedef struct fila no_t;
 no_t* criar_no(int valor);
 no_t* criar_no_encadeado(int valor);
 void adicionar_no(no_t** inicio, int valor);
 void adicionar_no_circular(no_t** inicio, int valor);
 no_t *buscar_no(no_t** inicio, int valor);
 void remover_no(no_t** inicio, int valor);
-void destruir_no(no_t** inicio)
+void destruir_no(no_t** inicio);
 
 #endif

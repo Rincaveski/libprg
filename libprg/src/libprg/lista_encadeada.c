@@ -2,7 +2,7 @@
 
 #include "libprg/libprg.h"
 
-typedef struct no {
+typedef struct fila {
     int valor;
     no_t* proximo;
 } no_t;

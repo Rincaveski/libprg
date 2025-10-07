@@ -4,7 +4,7 @@
 
 #include "libprg/libprg.h"
 
-typedef struct no {
+typedef struct fila {
     int* elementos;
     int tamanho;
     int inicio;
