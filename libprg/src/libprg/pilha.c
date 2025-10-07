@@ -18,13 +18,12 @@ pilha_t* cria_pilha(int qnt) {
 }
 
 void empilhar(pilha_t* pilha, int valor) {
-    if (pilha->capacidade < pilha->topo) {
+    if (pilha->capacidade <= pilha->topo + 1) {
         pilha->capacidade = pilha->capacidade * 2;
         pilha->elementos = realloc(pilha->elementos, pilha->capacidade * sizeof(int));
-    } else {
-        pilha->topo++;
-        pilha->elementos[pilha->topo] = valor;
     }
+    pilha->topo++;
+    pilha->elementos[pilha->topo] = valor;
 }
 
 int desempilhar(pilha_t* pilha) {
@@ -37,15 +36,18 @@ int desempilhar(pilha_t* pilha) {
 }
 
 int topo_pilha(pilha_t* pilha) {
-    return pilha->elementos[pilha->topo];
+    if (pilha->topo >= 0) {
+        return pilha->elementos[pilha->topo];
+    }
+    return 0;
 }
 
 int tamanho_pilha(pilha_t* pilha) {
-    return pilha->capacidade;
+    return pilha->topo + 1;
 }
 
 void imprime_pilha(pilha_t* pilha) {
-    for (int i = 0; i < pilha->topo; ++i) {
+    for (int i = 0; i <= pilha->topo; ++i) {
         printf("Elemento %d: %d\n", i + 1, pilha->elementos[i]);
     }
 }
