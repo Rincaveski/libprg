@@ -18,7 +18,7 @@ int busca_linear(lista_t* lista, int valor);
 int busca_binaria(lista_t* lista, int valor);
 
 lista_t* criar_lista(int capacidade, bool ordenar) {
-    lista_t* lista = malloc(sizeof(lista));
+    lista_t* lista = malloc(sizeof(lista_t));
     lista->elementos = malloc(sizeof(int) * capacidade);
     lista->tamanho = 0;
     lista->capacidade = capacidade;
@@ -54,7 +54,14 @@ void remover_item_lista(lista_t* lista, int valor) {
         exit(EXIT_FAILURE);
     }
 
-    lista->elementos[indice] = lista->elementos[lista->tamanho - 1];
+    if (lista->isOrdenada) {
+        for (int i = indice; i < lista->tamanho; ++i) {
+            lista->elementos[i] = lista->elementos[i + 1];
+        }
+    } else {
+        lista->elementos[indice] = lista->elementos[lista->tamanho - 1];
+    }
+
     lista->tamanho--;
 }
 
@@ -89,15 +96,16 @@ void inserir_nao_ordenada(lista_t *lista, int valor) {
 }
 
 void inserir_ordenada(lista_t *lista, int valor) {
-    for (int i = lista->tamanho - 1; i < 0; --i) {
-        if (lista->elementos[i] < valor) {
-            lista->elementos[i + 1] = valor;
-            lista->tamanho++;
-            break;
-        }
+    int i = lista->tamanho - 1;
 
+    while (i >= 0 && lista->elementos[i] > valor) {
         lista->elementos[i + 1] = lista->elementos[i];
+        i--;
     }
+
+    lista->elementos[i + 1] = valor;
+
+    lista->tamanho++;
 }
 
 int busca_binaria(lista_t* lista, int valor) {

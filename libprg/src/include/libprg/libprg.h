@@ -34,7 +34,7 @@ void listar_primeiro_elemento_e_tamanho(lista_t* lista);
 void listar(lista_t* lista);
 
 // Lista encadeada
-typedef struct fila no_t;
+typedef struct no no_t;
 no_t* criar_no(int valor);
 no_t* criar_no_encadeado(int valor);
 void adicionar_no(no_t** inicio, int valor);
@@ -42,5 +42,8 @@ void adicionar_no_circular(no_t** inicio, int valor);
 no_t *buscar_no(no_t** inicio, int valor);
 void remover_no(no_t** inicio, int valor);
 void destruir_no(no_t** inicio);
+void destruir_no_circular(no_t** inicio);
+void mostrar_no(no_t** inicio);
+no_t* mostrar_inicio_no(no_t** inicio);
 
 #endif

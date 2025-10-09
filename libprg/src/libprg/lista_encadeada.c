@@ -1,8 +1,9 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "libprg/libprg.h"
 
-typedef struct fila {
+typedef struct no {
     int valor;
     no_t* proximo;
 } no_t;
@@ -47,7 +48,7 @@ no_t *buscar_no(no_t** inicio, int valor) {
     no_t *atual = *inicio;
 
     while (atual) {
-        if ((*inicio)->valor == valor) {
+        if (atual->valor == valor) {
             return atual;
         }
         atual = atual->proximo;
@@ -98,4 +99,23 @@ void destruir_no_circular(no_t** inicio) {
         }
         atual = proximo;
     }
+}
+
+void mostrar_no(no_t** inicio) {
+    no_t* atual = *inicio;
+
+    while (atual)
+    {
+        no_t* proximo = atual->proximo;
+        printf(" %d", atual->valor);
+        atual = proximo;
+    }
+}
+
+no_t* mostrar_inicio_no(no_t** inicio) {
+    if (inicio)
+    {
+        return *inicio;
+    }
+    return NULL;
 }

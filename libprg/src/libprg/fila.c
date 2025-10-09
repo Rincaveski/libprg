@@ -65,6 +65,7 @@ void imprime_fila(fila_t* fila) {
         int indice = (fila->inicio + i) % fila->capacidade;
         printf("%d ", fila->elementos[indice]);
     }
+    printf("\n");
 }
 
 void destruir_fila(fila_t* fila) {
