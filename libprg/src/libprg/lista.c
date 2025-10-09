@@ -80,6 +80,10 @@ void listar(lista_t* lista) {
     }
 }
 
+int tamanho_lista(lista_t* lista) {
+    return lista->tamanho;
+}
+
 //-------------------------------------------//
 
 bool vazia(lista_t* lista) {
