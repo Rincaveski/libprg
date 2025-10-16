@@ -47,4 +47,13 @@ void destruir_no_circular(no_t** inicio);
 void mostrar_no(no_t** inicio);
 no_t* mostrar_inicio_no(no_t** inicio);
 
+// Lista encadeada dupla
+
+typedef struct no_duplo no_duplo_t;
+no_duplo_t* criar_no_duplo(int valor);
+void adicionar_no_duplo(no_duplo_t** inicio, int valor);
+no_duplo_t* buscar_no_duplo(no_t** inicio, int valor);
+void remover_no_duplo(no_duplo_t** inicio, int valor);
+void destruir_no_duplo(no_t** inicio);
+
 #endif
