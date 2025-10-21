@@ -33,6 +33,8 @@ void destruir_lista(lista_t* lista);
 void listar_primeiro_elemento_e_tamanho(lista_t* lista);
 void listar(lista_t* lista);
 int tamanho_lista(lista_t* lista);
+bool lista_cheia(lista_t* lista);
+int buscar_na_posicao(lista_t* lista, int posicao);
 
 // Lista encadeada
 typedef struct no no_t;

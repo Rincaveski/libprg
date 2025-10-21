@@ -29,7 +29,8 @@ lista_t* criar_lista(int capacidade, bool ordenar) {
 
 void inserir_lista(lista_t* lista, int valor) {
     if (cheia(lista)) {
-        exit(EXIT_FAILURE);
+        lista->elementos = realloc(lista->elementos, sizeof(int) * lista->capacidade * 2);
+        lista->capacidade *= 2;
     }
 
     if (lista->isOrdenada) {
@@ -82,6 +83,42 @@ void listar(lista_t* lista) {
 
 int tamanho_lista(lista_t* lista) {
     return lista->tamanho;
+}
+
+bool lista_cheia(lista_t* lista) {
+    return lista->tamanho == lista->capacidade;
+}
+
+int buscar_na_posicao(lista_t* lista, int posicao) {
+    return lista->elementos[posicao];
+}
+
+void inserir_na_posicao_lista(lista_t* lista, int posicao, int valor) {
+    if (posicao > lista->tamanho) {
+        posicao = lista->tamanho;
+    }
+
+    int tamano = lista->tamanho;
+
+    while (posicao > tamano) {
+        inserir_lista(lista, buscar_na_posicao(lista, tamano));
+        posicao--;
+    }
+
+    lista->elementos[posicao] = valor;
+}
+
+void remover_na_posicao_lista(lista_t* lista, int posicao) {
+    if (posicao == lista->tamanho) {
+        lista->tamanho--;
+    } else {
+        int tamanho = lista->tamanho;
+
+        while (posicao < tamanho) {
+            lista->elementos[posicao] = lista->elementos[posicao + 1];
+            posicao++;
+        }
+    }
 }
 
 //-------------------------------------------//

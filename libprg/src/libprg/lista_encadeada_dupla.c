@@ -59,6 +59,6 @@ void remover_no_duplo(no_duplo_t** inicio, int valor) {
     }
 }
 
-void destruir_no_duplo(no_t** inicio) {
-
-}
+// void destruir_no_duplo(no_t** inicio) {
+//
+// }
