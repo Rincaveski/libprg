@@ -5,36 +5,36 @@
 
 typedef struct no {
     int valor;
-    no_t* proximo;
-} no_t;
+    no_binario_t* proximo;
+} no_binario_t;
 
-no_t* criar_no(int valor) {
-    no_t* no = malloc(sizeof(no_t));
+no_binario_t* criar_no(int valor) {
+    no_binario_t* no = malloc(sizeof(no_binario_t));
     no->valor = valor;
     no->proximo = NULL;
 
     return no;
 }
 
-no_t* criar_no_encadeado(int valor) {
-    no_t *no = malloc(sizeof(no_t));
+no_binario_t* criar_no_encadeado(int valor) {
+    no_binario_t *no = malloc(sizeof(no_binario_t));
     no->valor = valor;
     no->proximo = no;
 
     return no;
 }
 
-void adicionar_no(no_t** inicio, int valor) {
-    no_t* no = criar_no(valor);
+void adicionar_no(no_binario_t** inicio, int valor) {
+    no_binario_t* no = criar_no(valor);
     no->proximo = *inicio;
     *inicio = no;
 }
 
-void adicionar_no_circular(no_t** inicio, int valor) {
-    no_t* novo_no = criar_no_encadeado(valor);
+void adicionar_no_circular(no_binario_t** inicio, int valor) {
+    no_binario_t* novo_no = criar_no_encadeado(valor);
     novo_no->proximo = *inicio;
 
-    no_t* ultimo = *inicio;
+    no_binario_t* ultimo = *inicio;
 
     while (ultimo->proximo != *inicio) {
         ultimo = ultimo->proximo;
@@ -44,8 +44,8 @@ void adicionar_no_circular(no_t** inicio, int valor) {
     *inicio = novo_no;
 }
 
-no_t *buscar_no(no_t** inicio, int valor) {
-    no_t *atual = *inicio;
+no_binario_t *buscar_no(no_binario_t** inicio, int valor) {
+    no_binario_t *atual = *inicio;
 
     while (atual) {
         if (atual->valor == valor) {
@@ -57,9 +57,9 @@ no_t *buscar_no(no_t** inicio, int valor) {
     return NULL;
 }
 
-void remover_no(no_t** inicio, int valor) {
-    no_t *atual = *inicio;
-    no_t *anterior = NULL;
+void remover_no(no_binario_t** inicio, int valor) {
+    no_binario_t *atual = *inicio;
+    no_binario_t *anterior = NULL;
 
     while (atual) {
         if (atual->valor == valor) {
@@ -78,21 +78,21 @@ void remover_no(no_t** inicio, int valor) {
     }
 }
 
-void destruir_no(no_t** inicio) {
-    no_t* atual = *inicio;
+void destruir_no(no_binario_t** inicio) {
+    no_binario_t* atual = *inicio;
 
     while (atual) {
-        no_t* proximo = atual->proximo;
+        no_binario_t* proximo = atual->proximo;
         free(atual);
         atual = proximo;
     }
 }
 
-void destruir_no_circular(no_t** inicio) {
-    no_t* atual = *inicio;
+void destruir_no_circular(no_binario_t** inicio) {
+    no_binario_t* atual = *inicio;
 
     while (atual) {
-        no_t* proximo = atual->proximo;
+        no_binario_t* proximo = atual->proximo;
         free(atual);
         if (proximo == *inicio) {
             break;
@@ -101,18 +101,18 @@ void destruir_no_circular(no_t** inicio) {
     }
 }
 
-void mostrar_no(no_t** inicio) {
-    no_t* atual = *inicio;
+void mostrar_no(no_binario_t** inicio) {
+    no_binario_t* atual = *inicio;
 
     while (atual)
     {
-        no_t* proximo = atual->proximo;
+        no_binario_t* proximo = atual->proximo;
         printf(" %d", atual->valor);
         atual = proximo;
     }
 }
 
-no_t* mostrar_inicio_no(no_t** inicio) {
+no_binario_t* mostrar_inicio_no(no_binario_t** inicio) {
     if (inicio)
     {
         return *inicio;

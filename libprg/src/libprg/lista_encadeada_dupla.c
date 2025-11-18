@@ -9,7 +9,7 @@ typedef struct no_duplo {
 } no_duplo_t;
 
 no_duplo_t* criar_no_duplo(int valor) {
-    no_duplo_t* no_duplo = malloc(sizeof(no_t));
+    no_duplo_t* no_duplo = malloc(sizeof(no_binario_t));
     no_duplo->valor = valor;
     no_duplo->proximo = NULL;
     no_duplo->anterior = NULL;
@@ -25,7 +25,7 @@ void adicionar_no_duplo(no_duplo_t** inicio, int valor) {
     *inicio = novo_no_duplo;
 }
 
-no_duplo_t* buscar_no_duplo(no_t** inicio, int valor) {
+no_duplo_t* buscar_no_duplo(no_binario_t** inicio, int valor) {
     no_duplo_t* atual = *inicio;
 
     while (atual)

@@ -37,25 +37,27 @@ bool lista_cheia(lista_t* lista);
 int buscar_na_posicao(lista_t* lista, int posicao);
 
 // Lista encadeada
-typedef struct no no_t;
-no_t* criar_no(int valor);
-no_t* criar_no_encadeado(int valor);
-void adicionar_no(no_t** inicio, int valor);
-void adicionar_no_circular(no_t** inicio, int valor);
-no_t *buscar_no(no_t** inicio, int valor);
-void remover_no(no_t** inicio, int valor);
-void destruir_no(no_t** inicio);
-void destruir_no_circular(no_t** inicio);
-void mostrar_no(no_t** inicio);
-no_t* mostrar_inicio_no(no_t** inicio);
+typedef struct no no_binario_t;
+no_binario_t* criar_no(int valor);
+no_binario_t* criar_no_encadeado(int valor);
+void adicionar_no(no_binario_t** inicio, int valor);
+void adicionar_no_circular(no_binario_t** inicio, int valor);
+no_binario_t *buscar_no(no_binario_t** inicio, int valor);
+void remover_no(no_binario_t** inicio, int valor);
+void destruir_no(no_binario_t** inicio);
+void destruir_no_circular(no_binario_t** inicio);
+void mostrar_no(no_binario_t** inicio);
+no_binario_t* mostrar_inicio_no(no_binario_t** inicio);
 
 // Lista encadeada dupla
-
 typedef struct no_duplo no_duplo_t;
 no_duplo_t* criar_no_duplo(int valor);
 void adicionar_no_duplo(no_duplo_t** inicio, int valor);
-no_duplo_t* buscar_no_duplo(no_t** inicio, int valor);
+no_duplo_t* buscar_no_duplo(no_binario_t** inicio, int valor);
 void remover_no_duplo(no_duplo_t** inicio, int valor);
-void destruir_no_duplo(no_t** inicio);
+void destruir_no_duplo(no_binario_t** inicio);
+
+// Arvore binaria
+typedef struct no_b no_binario_t;
 
 #endif
