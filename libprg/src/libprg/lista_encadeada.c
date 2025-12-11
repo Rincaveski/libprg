@@ -78,7 +78,7 @@ void remover_no(no_binario_t** inicio, int valor) {
     }
 }
 
-void destruir_no(no_binario_t** inicio) {
+void destruir_arvore(no_binario_t** inicio) {
     no_binario_t* atual = *inicio;
 
     while (atual) {

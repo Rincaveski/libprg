@@ -52,6 +52,20 @@ void imprime_pilha(pilha_t* pilha) {
     }
 }
 
+int imprime_pilha_indice(pilha_t* pilha, int indice) {
+    if (pilha->topo >= indice) {
+        return pilha->elementos[indice];
+    }
+
+    return 0;
+}
+
+void imprime_pilha_hanoi(pilha_t* esquerda, pilha_t* meio, pilha_t* direita, int n) {
+    for (int i = n - 1; i >= 0; --i) {
+        printf("%d %d %d\n", imprime_pilha_indice(esquerda, i), imprime_pilha_indice(meio, i), imprime_pilha_indice(direita, i));
+    }
+}
+
 void destruir_pilha(pilha_t *pilha) {
     free(pilha->elementos);
     free(pilha);

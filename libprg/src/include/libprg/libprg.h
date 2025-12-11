@@ -8,6 +8,7 @@ pilha_t* cria_pilha(int qnt);
 void empilhar(pilha_t* pilha, int valor);
 int desempilhar(pilha_t* pilha);
 void imprime_pilha(pilha_t* pilha);
+void imprime_pilha_hanoi(pilha_t* esquerda, pilha_t* meio, pilha_t* direita, int n);
 void destruir_pilha(pilha_t* pilha);
 int topo_pilha(pilha_t* pilha);
 int tamanho_pilha(pilha_t* pilha);
@@ -44,7 +45,7 @@ void adicionar_no(no_binario_t** inicio, int valor);
 void adicionar_no_circular(no_binario_t** inicio, int valor);
 no_binario_t *buscar_no(no_binario_t** inicio, int valor);
 void remover_no(no_binario_t** inicio, int valor);
-void destruir_no(no_binario_t** inicio);
+void destruir_arvore(no_binario_t** inicio);
 void destruir_no_circular(no_binario_t** inicio);
 void mostrar_no(no_binario_t** inicio);
 no_binario_t* mostrar_inicio_no(no_binario_t** inicio);
@@ -58,6 +59,42 @@ void remover_no_duplo(no_duplo_t** inicio, int valor);
 void destruir_no_duplo(no_binario_t** inicio);
 
 // Arvore binaria
-typedef struct no_b no_binario_t;
+typedef struct arvore_binaria arvore_binaria_t;
+arvore_binaria_t* criar_no(int valor);
+void destruir_arvore(arvore_binaria_t *no);
+arvore_binaria_t* inserir_folha(arvore_binaria_t* raiz, int valor);
+bool busca_valor_arvore(arvore_binaria_t* raiz, int valor);
+arvore_binaria_t* remover_valor_arvore(arvore_binaria_t* raiz, int valor);
+arvore_binaria_t* encontrar_no_minimo_arvore(arvore_binaria_t* raiz);
+int maior_valor_arvore(arvore_binaria_t* raiz);
+int menor_valor_arvore(arvore_binaria_t* raiz);
+int altura_arvore(arvore_binaria_t* raiz);
+int tamanho_arvore(arvore_binaria_t* raiz);
+void imprimir_arvore_em_ordem(arvore_binaria_t* raiz);
+void imprimir_arvore_em_pre_ordem(arvore_binaria_t* raiz);
+void imprimir_arvore_em_pos_ordem(arvore_binaria_t* raiz);
+void imprimir_arvore_por_largura(arvore_binaria_t* raiz);
+
+// Ordenacao
+void bubble_sort(int* vetor, int tamanho);
+void insertion_sort(int* vetor, int tamanho);
+void selection_sort(int* vetor, int tamanho);
+void merge(int* vetor, int esquerda, int meio, int direita);
+void merge_sort(int* vetor, int esquerda, int direita);
+int particiona(int* vetor, int esquerda, int direita);
+void quick_sort(int* vetor, int esquerda, int direita);
+
+// Dicionario
+typedef struct pessoa pessoa_t;
+typedef struct no no_dicionario_t;
+typedef struct dicionario dicionario_t;
+dicionario_t *criar_dicionario(int m);
+int hash(const char *chave, int m);
+void destruir_pessoa(pessoa_t *pessoa);
+void destruir_no(no_dicionario_t *no);
+void destruir_dicionario(dicionario_t *d;
+bool inserir(dicionario_t *d, char *chave, pessoa_t *valor);
+pessoa_t *buscar(dicionario_t *d, char *chave);
+void imprimir_pessoa(dicionario_t *d, char *chave);
 
 #endif
